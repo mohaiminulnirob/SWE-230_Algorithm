@@ -5,13 +5,15 @@ using namespace std;
 #define pb push_back
 const int mod=1e9+7;
 const int N=105;
+const int N1=1e5+9;
 ll c[N],p[N];
-vector<vector<ll>>dp;
+//vector<vector<ll>>dp;
+ll dp[N][N1];
 ll n,x;
 ll cal(ll i, ll cost){
 	if(i>n)
 		return 0;
-	if(dp[i][cost]!=-1)
+	if(dp[i][cost]!=-1) 
 		return dp[i][cost];
 	ll ans=cal(i+1, cost);
 	if(cost+c[i]<=x)
@@ -34,7 +36,8 @@ int32_t main()
   while(t--)
   {
    cin>>n>>x;
-   dp.assign(n + 1,vector<ll>(x+1,-1));
+   //dp.assign(n + 1,vector<ll>(x+1,-1));
+   memset(dp,-1,sizeof(dp));
    for(int i=1;i<=n;i++){
       cin>>c[i]>>p[i];
    }
